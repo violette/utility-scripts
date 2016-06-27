@@ -1,5 +1,11 @@
-bash-utility-scripts
+Utility scripts:
 ======
 
-This repository contains scripts to help you with git and others...  
+
+-----------------------------
+
+-`git_prepare_push.sh` bash script used to synchronize your local repository with upstream changes.
+
+
+----------------------------- 
 
