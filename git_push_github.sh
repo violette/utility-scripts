@@ -16,7 +16,6 @@ git fetch upstream
 echo -e " \n>> git pull on master... "
 git rebase upstream/master
 git pull --rebase origin master
-# git pull --rebase origin master
 echo -e " \n>>"&&git checkout $current_branch&&echo -e ">>"
 echo -e " \n>> Rebasing $current_branch and replay your work on top of master "
 git rebase master
