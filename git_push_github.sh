@@ -1,7 +1,7 @@
 #!/bin/bash
 # Use to synchronize your local repository with upstream changes.
 # See https://www.atlassian.com/git/tutorials/syncing/git-pull
-# by vrom 2016.
+# by vrom 2016-2017
 # First step is to add the remote, call it "upstream":
 # then: git remote add upstream https://github.com/whoever/whatever.git
 # remote is not sync with upstream (original github)
