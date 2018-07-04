@@ -1,5 +1,5 @@
 @Grapes(
-    @Grab(group = 'com.nimbusds', module = 'nimbus-jose-jwt', version = '4.41.1')
+    @Grab(group = 'com.nimbusds', module = 'nimbus-jose-jwt', version = '5.12')
 )
 
 import com.nimbusds.jose.PlainHeader
