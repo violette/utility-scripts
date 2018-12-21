@@ -1,0 +1,56 @@
+    @Test
+    public void shouldVerifySignature() {
+        // Given
+        final String tokenGeneratedWithMyKey ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0ZXN0IjoidGhpcyBpcyBhIGNsYWltIGNvbnRlbnQifQ.A20tcREcH7b4tippeWBF4LPfxKgvHDLJCBmTIdw57ooI02_kYP73zr6ISYvoTpJVcTsDBJMFJfcNCwboWsVm_iA6ljmwngL8pzP_1ZxLxi5Vhj82vXxJrc2SbwbnqSWCF4ZqdNnizN_QAbTlPA2sWMxZh6dw9VX9SDYkFG9T4Zo";
+        final String tokenGeneratedWithMyKey2 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0ZXN0IjoidGhpcyBpcyBhIGNsYWltIGNvbnRlbnQifQ.b4t57lu4Rd2ivik3obYfazkoNrA8I-oJy6u5Kz_m37u15n6ohcRjQXNicRSFrHZFrCJnFXxkJGaqFlF2SLWYi5bBK3i75kyDwCEHeVNYK5W6eZ2ubAYjz38l54J7o1jyU99x3-hBUuC19MQ33ChhYRyADi2aEfpibWN3fQUpWz0";
+
+//        myKey
+//            "kty": "RSA",
+//            "kid": "myKey",
+//            "key_ops": ["sign"],
+//            "alg": "RS256",
+//            "n": "hk0cRdjR-0W_9JGYP9mGDWrJLhIDJFt113zd6IE9GsXYrLQBQffMykGGSw-yq2NyVDLY1LuOkZp7FH9ZtFlbgV2YpFXotRU17GLcxOqvEdrmSk1uGboS7ZDJ-g7ov8tIThBwWHDq4V2hAB0p9JoijtxSNLv66POIeHq36HrYKVc",
+//            "e": "AQAB",
+//            "d": "aQk164q_732Fu4mDQaymoye5YEbGHlFJwNbv1z_8wkuqQqgls6pSiHzmwx3r5w9IA4IhA4AM6OOhD07qoZqhbUe-pTHT7nFayP5jPUSR_SY2kUEXZ593hPHJ1ljhsbSilHXPOc4PPIcunNsfsJqLvvl-fMU7vN8W8KD_3sv3IAE"
+//        }
+
+        JsonValue myKeyAsJson = json(object(field("kty", "RSA"),
+                                       field("kid", "myKey"),
+                                       field("key_ops", array("sign")),
+                                       field("alg", "RS256"),
+                                       field("n",
+                                             "hk0cRdjR-0W_9JGYP9mGDWrJLhIDJFt113zd6IE9GsXYrLQBQffMykGGSw-yq2NyVDLY1LuOkZp7FH9ZtFlbgV2YpFXotRU17GLcxOqvEdrmSk1uGboS7ZDJ-g7ov8tIThBwWHDq4V2hAB0p9JoijtxSNLv66POIeHq36HrYKVc"),
+                                       field("e", "AQAB"),
+                                       field("d",
+                                             "aQk164q_732Fu4mDQaymoye5YEbGHlFJwNbv1z_8wkuqQqgls6pSiHzmwx3r5w9IA4IhA4AM6OOhD07qoZqhbUe-pTHT7nFayP5jPUSR_SY2kUEXZ593hPHJ1ljhsbSilHXPOc4PPIcunNsfsJqLvvl-fMU7vN8W8KD_3sv3IAE")));
+
+//        myKey2
+//        "kty": "RSA",
+//        "kid": "myKey2",
+//        "key_ops": ["sign"],
+//        "alg": "RS256",
+//        "n": "mKfe7JwRC9IQ9yXOFea0wqyb_wFhybMUS30tuXizBSk4awsqw5bhBae20njwabNm6uIE2sSQVMxb6FA15qlGnSFY9cTo-1oUJulmTpJOGvb1v8eMyVJw8ERAbR0bQOybqtRWxSZbt8DXgAACfV_db7j1JfcAYbh8jZcMPFCwJ5c",
+//        "e": "AQAB",
+//        "d": "Y2ySaJCNGaHLouxgeSs1d8VsJH4F7pRQF4qECVRvZGEgebdgNttB26kMDbDvBCjwUvK6LrHvPwuKoJf9Qynk7thYcUzO8CTGW38KbN1NolalzhXMIXJ0yH0n_ALZdbfwokuAh5_H7SnLXb_tA4cos3TBGyV8xxrWvySOpRyglOE"
+        JsonValue myKey2AsJson = json(object(field("kty", "RSA"),
+                                          field("kid", "myKey2"),
+                                          field("key_ops", array("sign")),
+                                          field("alg", "RS256"),
+                                          field("n",
+                                                "mKfe7JwRC9IQ9yXOFea0wqyb_wFhybMUS30tuXizBSk4awsqw5bhBae20njwabNm6uIE2sSQVMxb6FA15qlGnSFY9cTo-1oUJulmTpJOGvb1v8eMyVJw8ERAbR0bQOybqtRWxSZbt8DXgAACfV_db7j1JfcAYbh8jZcMPFCwJ5c"),
+                                          field("e", "AQAB"),
+                                          field("d",
+                                                "Y2ySaJCNGaHLouxgeSs1d8VsJH4F7pRQF4qECVRvZGEgebdgNttB26kMDbDvBCjwUvK6LrHvPwuKoJf9Qynk7thYcUzO8CTGW38KbN1NolalzhXMIXJ0yH0n_ALZdbfwokuAh5_H7SnLXb_tA4cos3TBGyV8xxrWvySOpRyglOE")));
+
+        final RsaJWK rsaJWK = RsaJWK.parse(myKeyAsJson);
+        final RsaJWK rsaJWK2 = RsaJWK.parse(myKey2AsJson);
+
+        final SignedJwt jwt = new JwtReconstruction().reconstructJwt(tokenGeneratedWithMyKey,
+                                                                     SignedJwt.class);
+
+        // When
+        final SigningHandler signingHandler = new SigningManager().newSigningHandler(rsaJWK.toRSAPublicKey());
+        // Then
+        assertThat(jwt.verify(signingHandler)).isTrue();
+        assertThat(rsaJWK).isNotEqualTo(rsaJWK2);
+        assertThat(rsaJWK.toRSAPublicKey()).isNotEqualTo(rsaJWK2.toRSAPublicKey());
