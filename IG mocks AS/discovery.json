@@ -1,0 +1,52 @@
+{
+	"heap": [{
+		"name": "DiscoveryPage",
+		"type": "ScriptableHandler",
+		"config": {
+			"type": "application/x-groovy",
+			"file": "discoverypage.groovy"
+		}
+	}],
+	"name": "same-client-id-discovery",
+	"condition": "${matches(request.uri.path, '^/account')}",
+	"handler": {
+		"type": "Chain",
+		"config": {
+			"filters": [{
+				"name": "DynamicallyRegisteredClient",
+				"type": "OAuth2ClientFilter",
+				"config": {
+					"clientEndpoint": "/account",
+					"requireHttps": false,
+					"target": "${attributes.openid}",
+					"failureHandler": {
+						"type": "StaticResponseHandler",
+						"config": {
+							"comment": "Trivial failure handler for debugging only",
+							"status": 500,
+							"reason": "Error",
+							"entity": "Something wrong has happened"
+						}
+					},
+					"loginHandler": "DiscoveryPage",
+					"tokenEndpointAuthMethod": "client_secret_basic",
+					"metadata": {
+						"client_name": "oidc_client",
+						"redirect_uris": ["http://openig.example.com:8082/account/callback"],
+						"scopes": ["openid", "profile", "email"]
+					},
+					"cacheExpiration": "disabled"
+				},
+				"capture": "all"
+			}],
+			"handler": {
+				"name": "display",
+				"type": "StaticResponseHandler",
+				"config": {
+					"status": 200,
+					"entity": "<html><body>Accessing protected ressource ${attributes.openid}</body></html>"
+				}
+			}
+		}
+	}
+}
