@@ -1,0 +1,11 @@
+{
+	"condition": "${matches(request.uri.path, '^/authorize') or matches(request.uri.path, '^/.well-known/webfinger') or matches(request.uri.path, '^/register') or matches(request.uri.path, '^/issuer') or matches(request.uri.path, '^/token') or matches(request.uri.path, '^/userinfo')}",
+	"handler": {
+		"name": "myScriptableHandler",
+		"type": "ScriptableHandler",
+		"config": {
+			"type": "application/x-groovy",
+			"file": "AS-mock.groovy"
+		}
+	}
+}
