@@ -14,8 +14,7 @@ import com.nimbusds.jose.crypto.*
 import com.nimbusds.jwt.*
 
 // Generate random 256-bits (32-bytes) shared secret
-def sharedSecret = "--SecretKeySize32BytesMinimum---".getBytes();
-new SecureRandom().nextBytes(sharedSecret);
+def symmetricKey = new SecretKeySpec("--SecretKeySize32BytesMinimum---".getBytes(), "AES");
 
 def claimsSet = new JWTClaimsSet.Builder()
         .issueTime(new Date(1502382118))
@@ -24,7 +23,7 @@ def claimsSet = new JWTClaimsSet.Builder()
 
 def payload = new Payload(claimsSet.toJSONObject());
 def header = new JWEHeader(JWEAlgorithm.DIR, EncryptionMethod.A128CBC_HS256);
-def encrypter = new DirectEncrypter(sharedSecret);
+def encrypter = new DirectEncrypter(symmetricKey);
 
 JWEObject jweObject = new JWEObject(header, payload);
 jweObject.encrypt(encrypter);
