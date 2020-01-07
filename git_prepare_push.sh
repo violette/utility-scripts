@@ -1,7 +1,7 @@
 #!/bin/bash
 # Use to synchronize your local repository with upstream changes
 # See https://www.atlassian.com/git/tutorials/syncing/git-pull
-# by vrom 2015-2017
+# by vrom 2015-2020
 current_branch=$(git symbolic-ref --short HEAD)
 # This above, save your current branch name
 echo -e "------------------------------"
