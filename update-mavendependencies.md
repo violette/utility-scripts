@@ -1,6 +1,6 @@
 ### Update your project's maven dependencies with a simple command
 
-- Create a rules.xml file where your exclusions/inclusions are specified.
+- Create a rules (xml) file where your exclusions/inclusions are specified.
 Here an example to exclude alpha/beta:
 ```xml
 <ruleset comparisonMethod="maven"
