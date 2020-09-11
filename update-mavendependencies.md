@@ -1,7 +1,7 @@
 ### Update your project's maven dependencies with a simple command
 
 - Create a rules (xml) file where your exclusions/inclusions are specified.
-Here an example to exclude alpha/beta:
+Here an example to exclude alpha/beta/milestones/M:
 ```xml
 <ruleset comparisonMethod="maven"
   xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
