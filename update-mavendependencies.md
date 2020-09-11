@@ -8,7 +8,7 @@ Here an example to exclude alpha/beta/milestones/M:
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 http://mojo.codehaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
   <ignoreVersions>
-    <ignoreVersion type="regex">.*(([A|a]lpha)|([B|b]eta)|([M|m]ilestone)|(M|m)).*</ignoreVersion>
+    <ignoreVersion type="regex">.*(([A|a]lpha)|a|([B|b]eta)|b|([M|m]ilestone)|(M|m)|(rc)).*</ignoreVersion>
   </ignoreVersions>
 </ruleset>
 ```
