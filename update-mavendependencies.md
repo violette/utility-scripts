@@ -29,4 +29,6 @@ Then you can do quick update of your dependencies and create a pull request... E
 
 - https://www.mojohaus.org/versions-maven-plugin
 - https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd
+
+#### Links:
 - https://mvnrepository.com/
