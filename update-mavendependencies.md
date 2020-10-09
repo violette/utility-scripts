@@ -1,10 +1,10 @@
 ### Update your project's maven dependencies with a simple command
 
-Usually, when you want to update your maven dependencies version, you can use the command:
-`$ mvn versions:update-properties` but this will update the versions, using beta, milestone and so on, which are not acceptable
+Usually, when you want to update your maven dependencies version, you do it manually by checking the dependency on https://mvnrepository.com/ or you use the command:
+`$ mvn versions:update-properties` but this will update the versions using beta, milestones and so on, which are not acceptable
 in production.
 
-To automatically update the properties with only latest released versions, you can use the rules file as following:
+To automatically update the properties with only latest released versions, you can use the rule file as following:
 
 - Create a rules (xml) file where your exclusions/inclusions are specified.
 Here an example to exclude alpha/beta/milestones/M:
@@ -29,3 +29,4 @@ Then you can do quick update of your dependencies and create a pull request... E
 
 - https://www.mojohaus.org/versions-maven-plugin
 - https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd
+- https://mvnrepository.com/
