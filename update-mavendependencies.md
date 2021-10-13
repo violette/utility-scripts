@@ -32,3 +32,6 @@ Then you can do quick update of your dependencies and create a pull request... E
 
 #### Links:
 - https://mvnrepository.com/
+
+#### See also the PoC with JGit and generated local commits and release notes links
+- https://github.com/violette/versions-maven-plugin
