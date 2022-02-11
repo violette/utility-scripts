@@ -21,7 +21,7 @@ Here an example to exclude alpha/beta/milestones/M:
 
 - Run the maven command line:
 `$ mvn versions:update-properties -Dmaven.version.rules=file:///<path_to_your_file>/rules`
-or with the option -DexcludeProperties=testng.version [to exclude one or more dependencies update|http://www.mojohaus.org/versions-maven-plugin/update-properties-mojo.html#excludeProperties]
+or with the option -DexcludeProperties=testng.version [to exclude one or more dependencies update](http://www.mojohaus.org/versions-maven-plugin/update-properties-mojo.html#excludeProperties)
 `$ mvn versions:update-properties -Dmaven.version.rules=file:///<path_to_your_file>/rules -DexcludeProperties=testng.version`
 
 
