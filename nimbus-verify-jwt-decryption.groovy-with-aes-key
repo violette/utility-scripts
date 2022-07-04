@@ -1,0 +1,48 @@
+import com.nimbusds.jose.*
+import com.nimbusds.jose.crypto.*
+
+@groovy.lang.Grapes([
+        @Grab(group = 'com.nimbusds', module = 'nimbus-jose-jwt', version = '9.23'),
+        @Grab(group = 'org.bouncycastle', module = 'bcpkix-jdk15on', version = '1.68')
+])
+import javax.crypto.spec.SecretKeySpec
+
+import static groovy.test.GroovyAssert.assertEquals
+
+/**
+ * Given an AES key and a given JWE - decrypts the payload
+ * @author violette - 2022.
+ */
+ 
+println("============================================================================================")
+//println("===GIVEN: ")
+base64_encoded_key = """IMidK+zZvT7oibtNw0N/FFxCSkEZtmJiGz8YiTT1MvA="""
+given_jwe = """eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..q68SXhy_tBYJwFzoaRdW4g.djWey1t4eX7hNBXA4BbVhg.rbbBN_S0nKLitO-nJ6frJw"""
+println("============================================================================================")
+println("SECRET KEY (BASE64 ENCODED) >>>>" + base64_encoded_key)
+key = new SecretKeySpec(Base64.decoder.decode(base64_encoded_key), "AES");
+
+JWEObject jweObject;
+try {
+    jweObject = JWEObject.parse(given_jwe)
+} catch (Exception ex) {
+    println(ex)
+}
+println("JWE >>>>" + jweObject.serialize())
+
+// Decrypt
+// Get the plain text
+payload = ""
+try {
+    jweObject.decrypt(new DirectDecrypter(key))
+    // Get the plain text
+    payload = jweObject.getPayload();
+    println("DECRYPTED JWT >>>>" + jweObject.getPayload())
+} catch (Exception ex) {
+    println(ex)
+}
+
+assertEquals("Hello world!", payload.toString());
+println("============================================================================================")
+println("END")
+println("============================================================================================")
